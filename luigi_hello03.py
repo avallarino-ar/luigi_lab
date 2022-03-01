@@ -1,5 +1,4 @@
 # Visualizing running workflows (optional)
-# Ejecucion definimos
 #- scheduler: --scheduler-host localhost
 #- task a ejecutar: NameSubstituter
 #- name: parameter

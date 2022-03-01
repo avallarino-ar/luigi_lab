@@ -1,6 +1,6 @@
 #- task a ejecutar: NameSubstituter
 #- name: parameter
-# python luigi_hello02.py --local-scheduler NameSubstituter --name test
+# python luigi_hello_tmp.py --local-scheduler NameSubstituter --name test
 
 import luigi
 import os
@@ -28,10 +28,16 @@ class NameSubstituter(luigi.Task):
             text = infile.read()
             text = text.replace('World', self.name)
             outfile.write(text)
+
+        with self.input().open() as infile, self.output().open('w') as outfile:
+            text = infile.read()
+            text = text.replace('World', "New file")
+            outfile.write(text)
     
     def output(self):
         filename, file_extension = os.path.splitext(self.input().path)
-        return luigi.LocalTarget(filename + '_new_' + self.name + file_extension)
+        return {luigi.LocalTarget(filename + '_new_' + file_extension),
+                luigi.LocalTarget(filename + '_scnd_' + file_extension)}
 
 if __name__ == '__main__':
     luigi.run()

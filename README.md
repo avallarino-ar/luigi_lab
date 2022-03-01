@@ -24,3 +24,13 @@ Getting Started
 ![](https://luigi.readthedocs.io/en/stable/_images/task_breakdown.png)
     
 
+
+
+--- 
+### Triggering recurring tasks
+Luigi actually comes with a reusable tool for achieving this, called RangeDailyBase (resp. RangeHourlyBase).
+
+`luigi --module all_reports RangeDailyBase --of AllReports --start 2022-02-25`
+
+### Backfilling tasks 
++ `luigi --module all_reports RangeDaily --of AllReportsV2 --start 2022-01-01 --stop 2022-02-25`

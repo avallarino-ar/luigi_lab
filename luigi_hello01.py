@@ -1,5 +1,3 @@
-# Ejecucion: definimos
-#- scheduler (en este caso no necesitamos iniciar un nuevo) 
 #- task a ejecutar: HelloWorld
 # python luigi_hello01.py --local-scheduler HelloWorld
 
